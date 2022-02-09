@@ -1,0 +1,18 @@
+.trending-categories {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 85%;
+  margin: 0 auto;
+  justify-content: space-evenly;
+  
+}
+
+.category-item {
+  width: 24%;
+  height: 8rem;
+  border-radius: 0.5rem;
+  margin-top: 1%;
+  background-color: var(--bglight-mainboard-color);
+  padding: 2rem;
+  text-align: left;
+}

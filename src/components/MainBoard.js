@@ -3,6 +3,8 @@ import "./MainBoard.css";
 import userAvatar from "../assets/userAvatar.png";
 
 const MainBoard = () => {
+  const listItems = Array(9).fill(null);
+
 	return (
 		<main className="mainboard">
 			<article className="mainboard-heroimg">
@@ -30,8 +32,8 @@ const MainBoard = () => {
 						<path
 							d="M2 15.4239C15.6739 13.9365 29.4627 12.6952 43.1879 11.3272C52.8547 10.3637 62.7084 9.93124 72.3344 8.89477C81.5083 7.90696 90.5769 6.65033 99.7518 5.66221C117.996 3.69736 137.346 2.89339 155.945 2.23762C166.361 1.87038 177.194 1.9894 187.623 2.18961C191.523 2.26447 194.882 3.06565 198.584 3.61386C204.116 4.43298 209.624 5.36785 215.226 6.04628C229.969 7.83156 244.775 9.2248 259.378 11.3272C270.843 12.9778 282.946 14.6302 294.823 15.2639C298.426 15.4561 302.55 15.404 306 16"
 							stroke="currentColor"
-							stroke-width="10"
-							stroke-linecap="round"
+							strokeWidth="10"
+							strokeLinecap="round"
 						/>
 					</svg>
 				</p>
@@ -63,6 +65,7 @@ const MainBoard = () => {
 					type="radio"
 					name="platformradio"
 					id="party"
+					defaultChecked
 					value={1}
 				/>
 				<input
@@ -94,28 +97,28 @@ const MainBoard = () => {
 					02. <span>Searching Game</span>
 				</p>
 				<aside className="searching-box">
-					<div>
-						<input type="search" name="search" />
+					<div className="searching-box-input-container">
+						<input type="search" name="search" placeholder="Search..." />
 					</div>
 					<div className="user-list">
 						<ul className="user-list-ul">
-							<li>
-								<span>1</span>
-								<span>User Name </span>
-								<img src="" alt="user avatar" /> <button>+</button>
-							</li>
-							<li>
-								<span>2</span>
-								<span>User Name </span>
-								<img src="" alt="user avatar" /> <button>+</button>
-							</li>
-							<li>
-								<span>3</span>
-								<span>User Name </span>
-								<img src="" alt="user avatar" /> <button>+</button>
-							</li>
+							{listItems.map((el, index) => (
+								<li>
+									<span className="li-index-user">{index + 1}</span>
+									<span>User Name </span>
+									<img
+										className="li-image-user"
+										src={userAvatar}
+										alt="user avatar"
+										style={{ backgroundColor: "black" }}
+									/>
+									<div>
+										<button className="li-button-user">+</button>
+									</div>
+								</li>
+							))}
 						</ul>
-						<button>Search Now</button>
+						<button className="search-button">Search Now</button>
 					</div>
 				</aside>
 			</article>

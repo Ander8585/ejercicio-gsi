@@ -1,7 +1,14 @@
 .App {
   text-align: center;
-  height: 150vh;
+  height: 200vh;
   background-color: var(--bglight-body-color);
   max-width: 1280px;
   margin: 0 auto;
+}
+
+.App h2 {
+  margin-top: 5rem;
+  margin-bottom: 0;
+  text-align: left;
+  padding-left: 6rem;
 }

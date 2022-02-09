@@ -1,16 +1,39 @@
 import React from "react";
+import "./TrendingCategoriesGrid.css";
+
+const trendingList = [
+	"Action Games",
+	"Sport Games",
+	"Adventure Games",
+	"Arcade Games",
+	"Fantasy Games",
+	"Strategy Games",
+	"Shooter Games",
+	"All Categories",
+];
 
 const TrendingCategiesGrid = () => {
 	return (
 		<section className="trending-categories">
-			<article className="category-item">item 1</article>
-			<article className="category-item">item 2</article>
-			<article className="category-item">item 3</article>
-			<article className="category-item">item 4</article>
-			<article className="category-item">item 5</article>
-			<article className="category-item">item 6</article>
-			<article className="category-item">item 7</article>
-			<article className="category-item">item 8</article>
+			{trendingList.map((el, index) =>
+				index !== trendingList.length - 1 ? (
+					<article className="category-item">
+						{`/${index + 1}`}
+						<br />
+						{el}
+						<br />
+						{"▶"}
+					</article>
+				) : (
+					<article className="category-item">
+						{"VIEW ALL"}
+						<br />
+						{el}
+						<br />
+						{"▶"}
+					</article>
+				)
+			)}
 		</section>
 	);
 };
