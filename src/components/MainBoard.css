@@ -1,0 +1,208 @@
+.mainboard {
+  max-width: 85%;
+  min-width: 1024px;
+  margin: 0 auto;
+  /* border: thin solid black; */
+  display: flex;
+  text-align: start;
+  background-color: var(--bglight-mainboard-color);
+  border-radius: 1.5rem;
+}
+
+.mainboard > * {
+  width: 33.33%;
+}
+
+/***************1st Artlicle********************/
+.mainboard-heroimg {
+  padding: 4rem 3rem;
+  position: relative;
+}
+
+.mainboard-heroimg-bg {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.mainboard-heroimg-text {
+  font-size: clamp(2.5rem, 2.18rem + 1.56vw, 3.37rem);
+  line-height: 3.7rem;
+  font-weight: 600;
+  padding-right: 1rem;
+  padding-bottom: 2rem;
+  background-image: url("../assets/aros.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 0 2rem;
+}
+
+.mainboard-heroimg-text > span{
+  color: var(--text-second-color);
+}
+
+.small-text {
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.small-text span {
+  font-weight: bold;
+}
+
+.twisted-line-svg {
+  color: var(--bglight-mainboard-center-color);
+  position: absolute;
+  left: 6rem;
+  top: 1.3rem;
+}
+
+
+.mainboard-login {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.mainboard-login-createaccount {
+  border: none;
+  border-radius: 1.8rem;
+  padding: 0.9rem 1.7rem 1.1rem 1.7rem;
+  background-color: white;
+  box-shadow: 0.25rem 0.25rem 1rem rgba(0, 0, 0, 0.1);
+  color: black;
+  font-weight: inherit;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+.mainboard-login-signin {
+  border: none;
+  background-color: transparent;
+  font-weight: inherit;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+/***************2nd Artlicle********************/
+.mainboard-imgcenter {
+  border-radius: 0.4rem;
+  text-align: center;
+  padding: 1.5rem;
+  background-color: var(--bglight-mainboard-center-color);
+  background-image: url("../assets/forniteLight.jpg");
+  background-size: cover;
+
+}
+
+.imgcenter-title {
+  color: white;
+  text-shadow: 0.05rem 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+  margin-bottom: 0.5rem;
+}
+
+.imgcenter-subtitle {
+  color: #0007;
+  margin: 0;
+  margin-bottom: 2rem;
+}
+
+.time {
+  background-color: white;
+  padding: .7rem 0.3rem;
+  border-radius: 1.5rem;
+  color: var(--bglight-mainboard-center-color);
+  font-size: 1.1rem;
+  font-weight: bold;
+  position: relative;
+  width: 7rem;
+  margin: 0 auto 0 calc(38%) ;
+}
+
+.time > img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  position: absolute;
+  background-color: #fff3;
+  left: -2rem;
+  top: -1rem;
+  backdrop-filter: blur(0.15rem);
+}
+
+/***************3rd Artlicle********************/
+
+.mainboard-selectionarea {
+  padding: 3rem;
+}
+
+.mainboard-selectionarea-subtitle {
+  color: var(--dark-gray);
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.mainboard-selectionarea-subtitle > span {
+  color: black;
+  font-size: 1rem;
+}
+
+.radio-platformmenu {
+  display: none;
+}
+
+.nav-platformmenu {
+  --height-nav: 50px;
+  --vertical-padding: calc((var(--height-nav) - 1.5rem) / 2);
+
+  padding: var(--vertical-padding) 0;
+  background-color: white;
+  border: thin solid var(--border-gray);
+  border-radius: 1.8rem;
+  width: 100%;
+  height: var(--height-nav);
+  position: relative;
+}
+
+.nav-platformmenu:before {
+  content:'';
+  width: 33.33%;
+  height: calc(var(--height-nav) - 0.8rem);
+  background: var(--other-gray);
+  position: absolute;
+  transition: .5s;
+  top: 0.3rem;
+  left: 0.3rem;
+  border-radius: 1.7rem;
+}
+
+.platformradio-label {
+  width: 33.33%;
+  text-align: center;
+  cursor: pointer;
+  transition: .5s;
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  height: calc(var(--height-nav) - 0.8rem);
+  line-height: 1rem;
+}
+
+#party:checked ~ nav::before {
+  left: 0.3rem;
+}
+#matchs:checked ~ nav::before  {
+  left:33.33%;
+}
+#streams:checked ~ nav::before  {
+  left: calc(66.66% - 0.3rem);
+}
+
+.searching-box {
+  border: thin solid black;
+}
+

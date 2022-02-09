@@ -1,0 +1,15 @@
+.header-menu {
+  display: flex;
+  gap: 2rem;
+  max-width: 28.3%;
+  font-weight: bold;
+}
+
+.header-menu a {
+  text-decoration: none;
+  color: var(--dark-gray);
+}
+
+.header-menu a:first-child {
+  color: var( --bglight-mainboard-center-color);
+}
