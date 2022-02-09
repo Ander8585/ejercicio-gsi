@@ -17,7 +17,7 @@ const TrendingCategiesGrid = () => {
 		<section className="trending-categories">
 			{trendingList.map((el, index) =>
 				index !== trendingList.length - 1 ? (
-					<article className="category-item">
+					<article className="category-item" key={index}>
 						{`/${index + 1}`}
 						<br />
 						{el}
@@ -25,7 +25,7 @@ const TrendingCategiesGrid = () => {
 						{"▶"}
 					</article>
 				) : (
-					<article className="category-item">
+					<article className="category-item" key={index}>
 						{"VIEW ALL"}
 						<br />
 						{el}

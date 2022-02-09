@@ -103,7 +103,7 @@ const MainBoard = () => {
 					<div className="user-list">
 						<ul className="user-list-ul">
 							{listItems.map((el, index) => (
-								<li>
+								<li key={index}>
 									<span className="li-index-user">{index + 1}</span>
 									<span>User Name </span>
 									<img
