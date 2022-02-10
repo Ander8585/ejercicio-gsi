@@ -1,14 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
 import "./MainBoard.css";
 import userAvatar from "../assets/userAvatar.png";
+//------
+import userAvatar1 from "../assets/borrar/anderTorres-low.jpg";
+import userAvatar2 from "../assets/borrar/chat-media-card.jpg";
+import userAvatar3 from "../assets/borrar/customer-5.jpg";
+import userAvatar4 from "../assets/borrar/customer-6.jpg";
+import userAvatar5 from "../assets/borrar/customer-7.jpg";
+//------
+import SlideTab from "./SlideTab";
 
-const MainBoard = () => {
-  const listItems = Array(9).fill(null);
+const tabs = [
+	{ id: "party", text: <>🎉 Party</> },
+	{ id: "matchs", text: <>Matchs</> },
+	{ id: "streams", text: <>Streams</> },
+];
+
+const defaultTab = localStorage.getItem("defaultTab");
+
+const MainBoard = ({ theme = "light" }) => {
+	const listItems = [
+		{ imgSrc: userAvatar1 },
+		{ imgSrc: userAvatar2 },
+		{ imgSrc: userAvatar3 },
+		{ imgSrc: userAvatar4 },
+		{ imgSrc: userAvatar5 },
+		{ imgSrc: userAvatar3 },
+		{ imgSrc: userAvatar4 },
+		{ imgSrc: userAvatar1 },
+	];
+
+	const [selectedUser, setSelectedUser] = useState(userAvatar);
+
+	const onChangeTab = (e) => {
+		localStorage.setItem("defaultTab", e.target.value);
+	};
+
+	const addUser = (e) => {
+		setSelectedUser(listItems[parseInt(e.target.dataset.index)].imgSrc);
+	};
 
 	return (
-		<main className="mainboard">
-			<article className="mainboard-heroimg">
-				<h1 className="mainboard-heroimg-text">
+		<main className={`mainboard ${theme}`}>
+			<article className={`mainboard-heroimg ${theme}`}>
+				<h1 className={`mainboard-heroimg-text ${theme}`}>
 					start
 					<br />
 					<span>streaming</span>
@@ -17,7 +52,7 @@ const MainBoard = () => {
 					<br />
 					differently
 				</h1>
-				<p className="small-text">
+				<p className={`small-text ${theme}`}>
 					<small>
 						gamor now has <span className="">stream party</span> platform
 					</small>
@@ -37,88 +72,119 @@ const MainBoard = () => {
 						/>
 					</svg>
 				</p>
-				<nav className="mainboard-login">
-					<button className="mainboard-login-createaccount">
+				<nav className={`mainboard-login ${theme}`}>
+					<button className={`mainboard-login-createaccount ${theme}`}>
 						Create Account
 					</button>
 					<button className="mainboard-login-signin">Sign in</button>
 				</nav>
+				<svg
+					className="mainboard-heroimg-bg-svg"
+					xmlns="http://www.w3.org/2000/svg"
+					width="816"
+					height="411"
+					viewBox="0 0 816 411"
+					fill="none"
+				>
+					<path
+						d="M595.737 3.26794C675.62 0.26721 739.357 12.323 776.887 37.5324C814.416 62.7417 823.601 99.6686 802.991 142.484C782.382 185.3 733.151 231.565 663.071 273.977C592.991 316.389 506.053 352.532 415.981 376.7C325.909 400.869 237.833 411.687 165.656 407.446C93.4785 403.205 41.3118 384.147 17.3901 353.28C-6.53159 322.414 -0.845744 281.496 33.5501 236.988C67.946 192.479 129.093 146.914 207.338 107.485"
+						stroke="currentColor"
+						strokeWidth="inherit"
+					/>
+				</svg>
+				<svg
+					className="mainboard-heroimg-bg-svg second"
+					xmlns="http://www.w3.org/2000/svg"
+					width="816"
+					height="411"
+					viewBox="0 0 816 411"
+					fill="none"
+				>
+					<path
+						d="M595.737 3.26794C675.62 0.26721 739.357 12.323 776.887 37.5324C814.416 62.7417 823.601 99.6686 802.991 142.484C782.382 185.3 733.151 231.565 663.071 273.977C592.991 316.389 506.053 352.532 415.981 376.7C325.909 400.869 237.833 411.687 165.656 407.446C93.4785 403.205 41.3118 384.147 17.3901 353.28C-6.53159 322.414 -0.845744 281.496 33.5501 236.988C67.946 192.479 129.093 146.914 207.338 107.485"
+						stroke="currentColor"
+						strokeWidth="inherit"
+					/>
+				</svg>
+				<svg
+					className="mainboard-heroimg-bg-svg third"
+					xmlns="http://www.w3.org/2000/svg"
+					width="816"
+					height="411"
+					viewBox="0 0 816 411"
+					fill="none"
+				>
+					<path
+						d="M595.737 3.26794C675.62 0.26721 739.357 12.323 776.887 37.5324C814.416 62.7417 823.601 99.6686 802.991 142.484C782.382 185.3 733.151 231.565 663.071 273.977C592.991 316.389 506.053 352.532 415.981 376.7C325.909 400.869 237.833 411.687 165.656 407.446C93.4785 403.205 41.3118 384.147 17.3901 353.28C-6.53159 322.414 -0.845744 281.496 33.5501 236.988C67.946 192.479 129.093 146.914 207.338 107.485"
+						stroke="currentColor"
+						strokeWidth="inherit"
+					/>
+				</svg>
 			</article>
-			<article className="mainboard-imgcenter">
+			<article className={`mainboard-imgcenter ${theme}`}>
 				<h3 className="imgcenter-title">Nombre Juego</h3>
 				<h5 className="imgcenter-subtitle">Join Live Stream</h5>
 				<p className="time">
 					<span>11 : 45</span>
-					<img
-						src={false || userAvatar}
-						alt="user avatar"
-						className="useravatar"
-					/>
+					<img src={selectedUser} alt="user avatar" className="useravatar" />
 				</p>
 			</article>
-			<article className="mainboard-selectionarea">
-				<p className="mainboard-selectionarea-subtitle">
+			<article className={`mainboard-selectionarea ${theme}`}>
+				<p className={`mainboard-selectionarea-subtitle ${theme}`}>
 					01. <span>Choose Platform</span>
 				</p>
-				<input
-					className="radio-platformmenu"
-					type="radio"
-					name="platformradio"
-					id="party"
-					defaultChecked
-					value={1}
+				<SlideTab
+					theme={theme}
+					tabItems={tabs}
+					defaultItem={defaultTab}
+					onChange={onChangeTab}
 				/>
-				<input
-					className="radio-platformmenu"
-					type="radio"
-					name="platformradio"
-					id="matchs"
-					value={2}
-				/>
-				<input
-					className="radio-platformmenu"
-					type="radio"
-					name="platformradio"
-					id="streams"
-					value={3}
-				/>
-				<nav className="nav-platformmenu">
-					<label htmlFor="party" className="platformradio-label">
-						🎉 Party
-					</label>
-					<label htmlFor="matchs" className="platformradio-label">
-						Matchs
-					</label>
-					<label htmlFor="streams" className="platformradio-label">
-						Streams
-					</label>
-				</nav>
-				<p className="mainboard-selectionarea-subtitle">
+				<p className={`mainboard-selectionarea-subtitle ${theme}`}>
 					02. <span>Searching Game</span>
 				</p>
-				<aside className="searching-box">
-					<div className="searching-box-input-container">
-						<input type="search" name="search" placeholder="Search..." />
+				<aside className={`searching-box ${theme}`}>
+					<div className={`searching-box-input-container ${theme}`}>
+						<input type="text" name="search" placeholder="Find games..." />
+						<svg
+							width="192"
+							height="158"
+							viewBox="0 0 192 158"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								fillRule="evenodd"
+								clipRule="evenodd"
+								d="M53 36.5C53 45.6127 45.6127 53 36.5 53C27.3873 53 20 45.6127 20 36.5C20 27.3873 27.3873 20 36.5 20C45.6127 20 53 27.3873 53 36.5ZM73 36.5C73 56.6584 56.6584 73 36.5 73C16.3416 73 0 56.6584 0 36.5C0 16.3416 16.3416 0 36.5 0C56.6584 0 73 16.3416 73 36.5ZM107 46H192V26H107V46ZM0 129H85V109H0V129ZM155.5 138C164.613 138 172 130.613 172 121.5C172 112.387 164.613 105 155.5 105C146.387 105 139 112.387 139 121.5C139 130.613 146.387 138 155.5 138ZM155.5 158C175.658 158 192 141.658 192 121.5C192 101.342 175.658 85 155.5 85C135.342 85 119 101.342 119 121.5C119 141.658 135.342 158 155.5 158Z"
+								fill="#808080"
+							/>
+						</svg>
 					</div>
 					<div className="user-list">
-						<ul className="user-list-ul">
+						<ul className={`user-list-ul ${theme}`}>
 							{listItems.map((el, index) => (
 								<li key={index}>
 									<span className="li-index-user">{index + 1}</span>
 									<span>User Name </span>
 									<img
 										className="li-image-user"
-										src={userAvatar}
+										src={el ? el.imgSrc : userAvatar}
 										alt="user avatar"
 										style={{ backgroundColor: "black" }}
 									/>
 									<div>
-										<button className="li-button-user">+</button>
+										<button
+											className="li-button-user"
+											onClick={addUser}
+											data-index={index}
+										>
+											+
+										</button>
 									</div>
 								</li>
 							))}
 						</ul>
-						<button className="search-button">Search Now</button>
+						<button className={`search-button ${theme}`}>Search Now</button>
 					</div>
 				</aside>
 			</article>

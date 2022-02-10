@@ -1,7 +1,8 @@
 .header-loginmenu {
-  width: 28.3%;
+  width: 40%;/* 28.3%; */
   display: flex;
   justify-content: flex-end;
+  justify-items: stretch;
   gap: 2rem;
   font-size: 1rem;
   font-weight: bold;
@@ -13,6 +14,11 @@
   font-weight: inherit;
   font-size: inherit;
   font-family: inherit;
+  cursor: pointer;
+}
+
+.header-loginmenu-signin:hover {
+  opacity: 0.5;
 }
 
 .header-loginmenu-register {
@@ -24,4 +30,14 @@
   font-weight: inherit;
   font-size: inherit;
   font-family: inherit;
+  cursor: pointer;
 }
+
+.header-loginmenu-register:hover {
+  opacity: 0.5;
+}
+
+.header-loginmenu-register.dark {
+  border: 1px solid #8886 ;
+}
+

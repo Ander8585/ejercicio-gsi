@@ -5,7 +5,7 @@
   padding: 4rem 7.5%;
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
-  /* border: thin solid black; */
+  align-items: center;
   margin-bottom: 1rem;
+  color: inherit;
 }

@@ -1,31 +1,91 @@
 html {
+
+  --text-color-gray-medium: gray;
   /* ligth theme colors */
   --bglight-body-color: #f0f2f4;
   --bglight-mainboard-color: #f8fbfc;
   --bglight-mainboard-center-color: #7d34ee;
-  --bglight-button-color: #192027;
-  --text-second-color: #ec742f;
-  --light-gray: #ececec;
-  --other-gray: #f3f3f3;
-  --dark-gray: gray;
-  --border-gray: #ebecef;
+  --light-text-first-color: black;
+  --light-text-second-color: #ec742f;
+  --light-userbutton-bg: #ececec;
+  --light-slicetrack-bg: white;
+  --light-slicebutton-bg: #f3f3f3;
+  --light-indexuser-bg: var(--light-slicebutton-bg);
+  --light-border-slice-tab: #ebecef;
   
    /* dark theme colors */
-   --bgdark-body-color: #f0f2f4;
-   --bgdark-mainboard-color: #f8fbfc;
-   --bgdark-mainboard-center-color: #7d34ee;
-   --bgdark-button-color: #192027;
+   --bgdark-body-color: #1a1f27;
+   --bgdark-mainboard-color: #21262e;
+   --bgdark-mainboard-center-color: var(--light-text-second-color);
+   --dark-text-first-color: white;
+   --dark-text-second-color: var(--bglight-mainboard-center-color);
+   --dark-userbutton-bg: #45484f;
+   --dark-slicetrack-bg: var(--bgdark-body-color);
+   --dark-slicebutton-bg: #30353d;
+   --dark-indexuser-bg: #12151c;
+   --dark--border-slice-tab: var(--bgdark-mainboard-color);
+
+   /***************************/
+   /* --body-color: ;
+   --mainboard-color: ;
+   --mainboard-center-color: ;
+   --text-first-color: ;
+   --text-second-color: ;
+   --userbutton-bg: ;
+   --slicebutton-bg: ;
+   --indexuser-bg: ;
+   --border-slice-tab: ;
+ */
+   --body-color: var(--bglight-body-color);
+   --mainboard-color: var(--bglight-mainboard-color);
+   --mainboard-center-color: var(--bglight-mainboard-center-color);
+   --text-first-color: var(--light-text-first-color);
+   --text-second-color: var(--light-text-second-color);
+   --userbutton-bg: var(--light-userbutton-bg);
+   --slicetrack-bg: var(--light-slicetrack-bg);
+   --slicebutton-bg: var(--light-slicebutton-bg);
+   --indexuser-bg: var(--light-indexuser-bg);
+   --border-slice-tab: var(--light-border-slice-tab);
    
 
 	box-sizing: border-box;
 	scroll-behavior: smooth;
   font-size: 16px;
+  color: var(--text-first-color);
 }
 
 *,
 *::after,
 *::before {
 	box-sizing: inherit;
+}
+
+.dark {
+   --body-color: var(--bgdark-body-color);
+   --mainboard-color: var(--bgdark-mainboard-color);
+   --mainboard-center-color: var(--bgdark-mainboard-center-color);
+   --text-first-color: var(--dark-text-first-color);
+   --text-second-color: var(--dark-text-second-color);
+   --userbutton-bg: var(--dark-userbutton-bg);
+   --slicetrack-bg: var(--dark-slicetrack-bg);
+   --slicebutton-bg: var(--dark-slicebutton-bg);
+   --indexuser-bg: var(--dark-indexuser-bg);
+   --border-slice-tab: var(--dark--border-slice-tab);
+   color: var(--text-first-color);
+}
+
+.light {
+  --body-color: var(--bglight-body-color);
+  --mainboard-color: var(--bglight-mainboard-color);
+  --mainboard-center-color: var(--bglight-mainboard-center-color);
+  --text-first-color: var(--light-text-first-color);
+  --text-second-color: var(--light-text-second-color);
+  --userbutton-bg: var(--light-userbutton-bg);
+  --slicetrack-bg: var(--light-slicetrack-bg);
+  --slicebutton-bg: var(--light-slicebutton-bg);
+  --indexuser-bg: var(--light-indexuser-bg);
+  --border-slice-tab: var(--light-border-slice-tab);
+  color: var(--text-first-color);
 }
 
 body {
@@ -35,10 +95,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--body-color);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-

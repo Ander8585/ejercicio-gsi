@@ -4,12 +4,13 @@ import HeaderLoginMenu from "./HeaderLoginMenu";
 import HeaderMenu from "./HeaderMenu";
 import "./Header.css";
 
-const Header = () => {
+const Header = ({ theme = "", changeTheme }) => {
 	return (
-		<div className="header" id="header">
-			<HeaderMenu />
-			<Logo />
-			<HeaderLoginMenu />
+		<div className={`header ${theme}`} id="header">
+			<HeaderMenu theme={theme} />
+			<Logo theme={theme} />
+
+			<HeaderLoginMenu theme={theme} changeTheme={changeTheme} />
 		</div>
 	);
 };

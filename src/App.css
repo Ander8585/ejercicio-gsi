@@ -1,7 +1,7 @@
 .App {
   text-align: center;
   height: 200vh;
-  background-color: var(--bglight-body-color);
+  background-color: var(--body-color);
   max-width: 1280px;
   margin: 0 auto;
 }

@@ -1,299 +1,318 @@
 .mainboard {
-  max-width: 85%;
-  min-width: 1024px;
-  margin: 0 auto;
-  /* border: thin solid black; */
-  display: flex;
-  text-align: start;
-  background-color: var(--bglight-mainboard-color);
-  border-radius: 1.5rem;
+	max-width: 85%;
+	min-width: 1024px;
+	margin: 0 auto;
+	/* border: thin solid black; */
+	display: flex;
+	text-align: start;
+	background-color: var(--mainboard-color);
+	border-radius: 1.5rem;
 }
 
 .mainboard > * {
-  width: 33.33%;
+	width: 33.33%;
 }
 
 /***************1st Artlicle********************/
 .mainboard-heroimg {
-  padding: 4rem 3rem;
-  position: relative;
+	--top-bg-svg: 8.5rem;
+
+	padding: 4rem 3rem;
+	position: relative;
 }
 
-.mainboard-heroimg-bg {
-  width: 100%;
-  height: auto;
-  position: absolute;
-  top: 0;
-  left: 0;
+.mainboard-heroimg-bg-svg {
+	width: 70%;
+	height: auto;
+	position: absolute;
+	top: var(--top-bg-svg);
+	left: 3rem;
+	color: var(--text-second-color);
+	stroke-width: 2;
+}
+.mainboard-heroimg-bg-svg.second {
+	top: calc(var(--top-bg-svg) + 3.3rem);
+}
+.mainboard-heroimg-bg-svg.third {
+	top: calc(var(--top-bg-svg) + 6.6rem);
 }
 
 .mainboard-heroimg-text {
-  font-size: clamp(2.5rem, 2.18rem + 1.56vw, 3.37rem);
-  line-height: 3.7rem;
-  font-weight: 600;
-  padding-right: 1rem;
-  padding-bottom: 2rem;
-  background-image: url("../assets/aros.png");
+	font-size: clamp(2.5rem, 2.18rem + 1.56vw, 3.37rem);
+	line-height: 3.7rem;
+	font-weight: 600;
+	padding-right: 1rem;
+	padding-bottom: 2rem;
+	position: relative;
+	z-index: 2;
+	/* background-image: url("../assets/aros.png");
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: 0 2rem;
+  background-position: 0 2rem; */
 }
 
-.mainboard-heroimg-text > span{
-  color: var(--text-second-color);
+.mainboard-heroimg-text > span {
+	color: var(--text-second-color);
 }
 
 .small-text {
-  margin-bottom: 2.5rem;
-  position: relative;
+	margin-bottom: 2.5rem;
+	position: relative;
+}
+
+.small-text.dark {
+	color: var(--text-color-gray-medium);
 }
 
 .small-text span {
-  font-weight: bold;
+	font-weight: bold;
+	color: var(--text-first-color);
 }
 
 .twisted-line-svg {
-  color: var(--bglight-mainboard-center-color);
-  position: absolute;
-  left: 6rem;
-  top: 1.3rem;
+	color: var(--mainboard-center-color);
+	position: absolute;
+	left: 6rem;
+	top: 1.3rem;
 }
 
-
 .mainboard-login {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  font-size: 1rem;
-  font-weight: bold;
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+	font-size: 0.9rem;
+	font-weight: 600;
+	color: var(--text-first-color);
 }
 
 .mainboard-login-createaccount {
-  border: none;
-  border-radius: 1.8rem;
-  padding: 0.9rem 1.7rem 1.1rem 1.7rem;
-  background-color: white;
-  box-shadow: 0.25rem 0.25rem 1rem rgba(0, 0, 0, 0.1);
-  color: black;
-  font-weight: inherit;
-  font-size: inherit;
-  font-family: inherit;
+	border: none;
+	border-radius: 1.8rem;
+	padding: 0.9rem 1.7rem 1.1rem 1.7rem;
+	background-color: white;
+	box-shadow: 0.25rem 0.25rem 1rem rgba(0, 0, 0, 0.1);
+	color: inherit;
+	font-weight: inherit;
+	font-size: inherit;
+	font-family: inherit;
+	cursor: pointer;
+}
+
+.mainboard-login-createaccount:hover {
+  opacity: 0.5;
+}
+
+.mainboard-login-createaccount.dark {
+	background-color: var(--slicebutton-bg);
 }
 
 .mainboard-login-signin {
-  border: none;
-  background-color: transparent;
-  font-weight: inherit;
-  font-size: inherit;
-  font-family: inherit;
+	border: none;
+	background-color: transparent;
+	font-weight: inherit;
+	font-size: inherit;
+	font-family: inherit;
+	color: inherit;
+	cursor: pointer;
+}
+
+.mainboard-login-signin:hover {
+  opacity: 0.5;
 }
 
 /***************2nd Artlicle********************/
 .mainboard-imgcenter {
-  border-radius: 0.4rem;
-  text-align: center;
-  padding: 1.5rem;
-  background-color: var(--bglight-mainboard-center-color);
-  background-image: url("../assets/forniteLight.jpg");
-  background-size: cover;
+	border-radius: 0.4rem;
+	text-align: center;
+	padding: 1.5rem;
+	background-color: var(--mainboard-center-color);
+	background-image: url("../assets/forniteLight.jpg");
+	background-size: cover;
+}
 
+.mainboard-imgcenter.dark {
+	background-image: url("../assets/forniteDark.jpg");
 }
 
 .imgcenter-title {
-  color: white;
-  text-shadow: 0.05rem 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
-  margin-bottom: 0.5rem;
+	color: white;
+	text-shadow: 0.05rem 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+	margin-bottom: 0.5rem;
 }
 
 .imgcenter-subtitle {
-  color: #0007;
-  margin: 0;
-  margin-bottom: 2rem;
+	color: #0007;
+	margin: 0;
+	margin-bottom: 2rem;
 }
 
 .time {
-  background-color: white;
-  padding: .7rem 0.3rem;
-  border-radius: 1.5rem;
-  color: var(--bglight-mainboard-center-color);
-  font-size: 1.1rem;
-  font-weight: bold;
-  position: relative;
-  width: 7rem;
-  margin: 0 auto 0 calc(38%) ;
+	background-color: white;
+	padding: 0.7rem 0.3rem;
+	border-radius: 1.5rem;
+	color: var(--mainboard-center-color);
+	font-size: 1.1rem;
+	font-weight: bold;
+	position: relative;
+	width: 7rem;
+	margin: 0 auto 0 calc(38%);
 }
 
 .time > img {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  position: absolute;
-  background-color: #fff3;
-  left: -2rem;
-  top: -1rem;
-  backdrop-filter: blur(0.15rem);
+	width: 3rem;
+	height: 3rem;
+	border-radius: 50%;
+	position: absolute;
+	background-color: #fff3;
+	left: -2rem;
+	top: -1rem;
+	backdrop-filter: blur(0.15rem);
 }
 
 /***************3rd Artlicle********************/
 
 .mainboard-selectionarea {
-  padding: 3rem;
+	padding: 2.5rem;
 }
 
 .mainboard-selectionarea-subtitle {
-  color: var(--dark-gray);
-  font-weight: bold;
-  font-size: 1.3rem;
+	color: var(--text-color-gray-medium);
+	font-weight: bold;
+	font-size: 1.3rem;
+	margin-top: 3rem;
 }
 
 .mainboard-selectionarea-subtitle > span {
-  color: black;
-  font-size: 1rem;
-}
-
-.radio-platformmenu {
-  display: none;
-}
-
-.nav-platformmenu {
-  --height-nav: 50px;
-  --vertical-padding: calc((var(--height-nav) - 1.5rem) / 2);
-
-  padding: var(--vertical-padding) 0;
-  background-color: white;
-  border: thin solid var(--border-gray);
-  border-radius: 1.8rem;
-  width: 100%;
-  height: var(--height-nav);
-  position: relative;
-}
-
-.nav-platformmenu:before {
-  content:'';
-  width: 33.33%;
-  height: calc(var(--height-nav) - 0.8rem);
-  background: var(--other-gray);
-  position: absolute;
-  transition: .5s;
-  top: 0.3rem;
-  left: 0.3rem;
-  border-radius: 1.7rem;
-}
-
-.platformradio-label {
-  width: 33.33%;
-  text-align: center;
-  cursor: pointer;
-  transition: .5s;
-  display: inline-block;
-  position: relative;
-  z-index: 2;
-  height: calc(var(--height-nav) - 0.8rem);
-  line-height: 1rem;
-}
-
-#party:checked ~ nav::before {
-  left: 0.3rem;
-}
-#matchs:checked ~ nav::before  {
-  left:33.33%;
-}
-#streams:checked ~ nav::before  {
-  left: calc(66.66% - 0.3rem);
+	color: var(--text-first-color);
+	font-size: 1rem;
 }
 
 .searching-box {
-  border: thin solid var(--border-gray);
-  border-radius: 1rem;
-  background-color: white;
-  
+	border: thin solid var(--border-slice-tab);
+	border-radius: 1rem;
+	background-color: var(--slicetrack-bg);
 }
 
 .searching-box-input-container {
-  width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  padding: 1rem 0;
-  border-bottom: thin solid var(--border-gray);
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+	padding: 1rem 0;
+	border-bottom: 2px solid var(--border-slice-tab);
+	position: relative;
 }
 
 .searching-box-input-container input {
-  width: 87%;
-  font-size: 1rem;
-  font-family: inherit;
-  font-weight: bold;
-  border: 0;
-  padding-left: 0.5rem;
+	width: 87%;
+	font-size: 1rem;
+	font-family: inherit;
+	font-weight: bold;
+	border: 0;
+	padding-left: 0.5rem;
+	color: inherit;
+	background-color: var(--slicetrack-bg);
+}
+
+.searching-box-input-container svg {
+	width: auto;
+	height: 1rem;
+	position: absolute;
+	right: 2rem;
+	top: 1.3rem;
 }
 
 .searching-box-input-container input:focus-visible {
-  outline: 0;
+	outline: 0;
 }
 
 .user-list-ul {
-  list-style: none;
-  padding: 0 1.3rem;
-  text-align: center;
-  /* border: thin solid black; */
-  max-height: 280px;
-  overflow: hidden scroll;
+	list-style: none;
+	padding: 0 1.3rem;
+	text-align: center;
+	max-height: 200px;
+	overflow: hidden scroll;
 }
 
 .user-list-ul::-webkit-scrollbar {
-  width:0;
+	width: 10px;
 }
 
-.user-list-ul li{
-  padding: 0.8rem 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  font-weight: bold;
+.user-list-ul::-webkit-scrollbar-track {
+	background: var(--slicetrack-bg);
+}
+
+.user-list-ul::-webkit-scrollbar-thumb {
+	background-color: var(--slicebutton-bg);
+	border-radius: 20px;
+	border: 3px solid var(--slicebutton-bg);
+}
+
+.user-list-ul li {
+	padding: 0.8rem 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1rem;
+	font-weight: bold;
 }
 
 .li-index-user {
-  background-color: var(--other-gray);
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  font-size: 0.8rem;
+	background-color: var(--indexuser-bg);
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	font-size: 0.8rem;
 }
 
-.user-list-ul li > div{
-  flex-grow: 1;
-  text-align: right;
-  padding-bottom: 0.1rem;
+.user-list-ul li > div {
+	flex-grow: 1;
+	text-align: right;
+	padding-bottom: 0.1rem;
 }
 
 .li-button-user {
-  padding: 0.07rem 0.3rem;
-  border: none;
-  background-color: var(--light-gray);
-  border-radius: 0.2rem;
-  
+	padding: 0.07rem 0.3rem;
+	border: none;
+	background-color: var(--userbutton-bg);
+	border-radius: 0.2rem;
+	color: inherit;
+  cursor: pointer;
 }
- 
+
+.li-button-user:hover {
+  opacity: 0.5;
+}
+
 .li-image-user {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
 }
 
 .search-button {
-  border: none;
-  border-radius: 0.5rem;
-  padding: 0.9rem 1.7rem 1.1rem 1.7rem;
-  background-color: black;
-  color: white;
-  font-weight: inherit;
-  font-size: inherit;
-  font-family: inherit;
-  width: 88%;
-  margin: 0 1rem 1rem 1rem;
-  box-shadow: 0rem 0.5rem 2rem rgba(0, 0, 0, 0.5),
-              0 -2rem 2rem 1rem rgb(255, 255, 255);
-  position: relative;
-  z-index: 2;
+	border: none;
+	border-radius: 0.5rem;
+	padding: 0.9rem 1.7rem 1.1rem 1.7rem;
+	background-color: black;
+	color: white;
+	font-weight: bold;
+	font-size: inherit;
+	font-family: inherit;
+	width: 88%;
+	margin: 0 1rem 1rem 1rem;
+	box-shadow: 0rem 0.5rem 2rem #0005, 0 -2rem 2rem 1rem white;
+	position: relative;
+	z-index: 2;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  opacity: 0.5;
+}
+
+.search-button.dark {
+	background-color: white;
+	color: black;
+	box-shadow: 0 -2rem 2rem 1rem var(--slicetrack-bg);
 }
