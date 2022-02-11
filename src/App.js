@@ -63,7 +63,11 @@ function App() {
 				isLogguedIn={isLogguedIn}
 				setIsLogguedIn={setIsLogguedIn}
 			/>
-			<MainBoard theme={theme} accessToken={accessToken} />
+			<MainBoard
+				theme={theme}
+				accessToken={accessToken}
+				isLogguedIn={isLogguedIn}
+			/>
 			<h2>Trending Categories</h2>
 			<TrendingCategiesGrid theme={theme} />
 		</div>

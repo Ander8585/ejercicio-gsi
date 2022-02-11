@@ -15,7 +15,7 @@ const tabs = [
 
 const defaultTab = localStorage.getItem("defaultTab");
 
-const MainBoard = ({ theme = "light", accessToken }) => {
+const MainBoard = ({ theme = "light", accessToken, isLogguedIn }) => {
 	const [selectedUser, setSelectedUser] = useState(userAvatar);
 	const [searchText, setSearchText] = useState("");
 	const [gameTitle, setGameTitle] = useState("Search for a game...");
@@ -27,6 +27,7 @@ const MainBoard = ({ theme = "light", accessToken }) => {
 	};
 
 	const addUser = (e) => {
+		if (!isLogguedIn) return;
 		setSelectedUser(
 			userList[parseInt(e.target.dataset.index)].profile_image_url
 		);
@@ -35,7 +36,7 @@ const MainBoard = ({ theme = "light", accessToken }) => {
 	const searchGame = (e) => {
 		if (searchText === "") return;
 
-		if (!accessToken) {
+		if (!isLogguedIn) {
 			alert("Debe autenticarse antes de buscar un juego");
 			return;
 		}
