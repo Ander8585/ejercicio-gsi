@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import "./MainBoard.css";
 import userAvatar from "../assets/userAvatar.png";
-//------
-import userAvatar1 from "../assets/borrar/anderTorres-low.jpg";
-import userAvatar2 from "../assets/borrar/chat-media-card.jpg";
-import userAvatar3 from "../assets/borrar/customer-5.jpg";
-import userAvatar4 from "../assets/borrar/customer-6.jpg";
-import userAvatar5 from "../assets/borrar/customer-7.jpg";
-//------
+
 import SlideTab from "./SlideTab";
+import { helpHttp } from "../helpers/helpHttp";
+
+const api = helpHttp();
 
 const tabs = [
 	{ id: "party", text: <>🎉 Party</> },
@@ -18,26 +15,77 @@ const tabs = [
 
 const defaultTab = localStorage.getItem("defaultTab");
 
-const MainBoard = ({ theme = "light" }) => {
-	const listItems = [
-		{ imgSrc: userAvatar1 },
-		{ imgSrc: userAvatar2 },
-		{ imgSrc: userAvatar3 },
-		{ imgSrc: userAvatar4 },
-		{ imgSrc: userAvatar5 },
-		{ imgSrc: userAvatar3 },
-		{ imgSrc: userAvatar4 },
-		{ imgSrc: userAvatar1 },
-	];
-
+const MainBoard = ({ theme = "light", accessToken }) => {
 	const [selectedUser, setSelectedUser] = useState(userAvatar);
+	const [searchText, setSearchText] = useState("");
+	const [gameTitle, setGameTitle] = useState("Search for a game...");
+	const [gamePicture, setGamePicture] = useState("");
+	const [userList, setUserList] = useState(null);
 
 	const onChangeTab = (e) => {
 		localStorage.setItem("defaultTab", e.target.value);
 	};
 
 	const addUser = (e) => {
-		setSelectedUser(listItems[parseInt(e.target.dataset.index)].imgSrc);
+		setSelectedUser(
+			userList[parseInt(e.target.dataset.index)].profile_image_url
+		);
+	};
+
+	const searchGame = (e) => {
+		if (!accessToken) {
+			alert("Debe autenticarse antes de buscar un juego");
+			return;
+		}
+
+		let options = {
+			headers: {
+				Authorization: `Bearer ${accessToken}`,
+				"Client-Id": "4grmswqvi0ovo1uus3z5u4z8et1vvt",
+			},
+		};
+
+		api
+			.get(
+				`https://api.twitch.tv/helix/search/categories?query=${searchText}`,
+				options
+			)
+			.then((resGame) => {
+				console.log(resGame);
+				setGameTitle(resGame.data[0].name);
+				setGamePicture(
+					resGame.data[0].box_art_url.slice(0, -9) + "492x683.jpg"
+				);
+				api
+					.get(
+						`https://api.twitch.tv/helix/streams?game_id=${resGame.data[0].id}`,
+						options
+					)
+					.then((resStream) => {
+						console.log(resStream);
+						let multipleIdUsers = "";
+						resStream.data.forEach((stream, index) => {
+							if (index !== resStream.data.length - 1)
+								multipleIdUsers += `id=${stream.user_id}&`;
+							else multipleIdUsers += `id=${stream.user_id}`;
+						});
+						console.log("MultipleUsers: ", multipleIdUsers);
+						api
+							.get(
+								`https://api.twitch.tv/helix/users?${multipleIdUsers}`,
+								options
+							)
+							.then((resUsers) => {
+								console.log(resUsers);
+								setUserList([...resUsers.data]);
+							})
+							.catch((err) => console.log("Error de busqueda de los usuarios"));
+					})
+					.catch((err) =>
+						console.log("Error de busqueda de los Streams del juego")
+					);
+			})
+			.catch((err) => console.log("Error de busqueda del juego"));
 	};
 
 	return (
@@ -121,9 +169,26 @@ const MainBoard = ({ theme = "light" }) => {
 					/>
 				</svg>
 			</article>
-			<article className={`mainboard-imgcenter ${theme}`}>
-				<h3 className="imgcenter-title">Nombre Juego</h3>
-				<h5 className="imgcenter-subtitle">Join Live Stream</h5>
+			<article
+				className={`mainboard-imgcenter ${theme}`}
+				style={gamePicture ? { backgroundImage: `url("${gamePicture}")` } : {}}
+			>
+				{console.log(gamePicture)}
+				<h3
+					className="imgcenter-title"
+					style={
+						gamePicture ? { "text-shadow": "0 0 0.4rem rgba(0, 0, 0, 1)" } : {}
+					}
+				>
+					{gameTitle}
+				</h3>
+				<h5
+					className={
+						gamePicture ? "imgcenter-subtitle shadowed" : "imgcenter-subtitle"
+					}
+				>
+					Join Live Stream
+				</h5>
 				<p className="time">
 					<span>11 : 45</span>
 					<img src={selectedUser} alt="user avatar" className="useravatar" />
@@ -144,7 +209,14 @@ const MainBoard = ({ theme = "light" }) => {
 				</p>
 				<aside className={`searching-box ${theme}`}>
 					<div className={`searching-box-input-container ${theme}`}>
-						<input type="text" name="search" placeholder="Find games..." />
+						<input
+							type="text"
+							name="search"
+							placeholder="Find games..."
+							autocomplete="off"
+							value={searchText}
+							onChange={(e) => setSearchText(e.target.value)}
+						/>
 						<svg
 							width="192"
 							height="158"
@@ -162,29 +234,36 @@ const MainBoard = ({ theme = "light" }) => {
 					</div>
 					<div className="user-list">
 						<ul className={`user-list-ul ${theme}`}>
-							{listItems.map((el, index) => (
-								<li key={index}>
-									<span className="li-index-user">{index + 1}</span>
-									<span>User Name </span>
-									<img
-										className="li-image-user"
-										src={el ? el.imgSrc : userAvatar}
-										alt="user avatar"
-										style={{ backgroundColor: "black" }}
-									/>
-									<div>
-										<button
-											className="li-button-user"
-											onClick={addUser}
-											data-index={index}
-										>
-											+
-										</button>
-									</div>
-								</li>
-							))}
+							{userList &&
+								userList.map((user, index) => (
+									<li key={user.id}>
+										<span className="li-index-user">{index + 1}</span>
+										<span className="li-name-user">
+											{(user.display_name.length > 9
+												? user.display_name.slice(0, 9) + "..."
+												: user.display_name) || "user name"}
+										</span>
+										<img
+											className="li-image-user"
+											src={user ? user.profile_image_url : userAvatar}
+											alt="user profile"
+											style={{ backgroundColor: "#0005" }}
+										/>
+										<div>
+											<button
+												className="li-button-user"
+												onClick={addUser}
+												data-index={index}
+											>
+												+
+											</button>
+										</div>
+									</li>
+								))}
 						</ul>
-						<button className={`search-button ${theme}`}>Search Now</button>
+						<button className={`search-button ${theme}`} onClick={searchGame}>
+							Search Now
+						</button>
 					</div>
 				</aside>
 			</article>

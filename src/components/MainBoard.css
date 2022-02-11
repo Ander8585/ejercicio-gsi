@@ -45,10 +45,6 @@
 	padding-bottom: 2rem;
 	position: relative;
 	z-index: 2;
-	/* background-image: url("../assets/aros.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: 0 2rem; */
 }
 
 .mainboard-heroimg-text > span {
@@ -128,6 +124,7 @@
 	background-color: var(--mainboard-center-color);
 	background-image: url("../assets/forniteLight.jpg");
 	background-size: cover;
+	background-position: center;
 }
 
 .mainboard-imgcenter.dark {
@@ -146,6 +143,11 @@
 	margin-bottom: 2rem;
 }
 
+.imgcenter-subtitle.shadowed {
+	color: white;
+	text-shadow: 0rem 0rem 0.2rem rgba(0, 0, 0, 1);
+}
+
 .time {
 	background-color: white;
 	padding: 0.7rem 0.3rem;
@@ -155,7 +157,7 @@
 	font-weight: bold;
 	position: relative;
 	width: 7rem;
-	margin: 0 auto 0 calc(38%);
+	margin: 0 auto 0 calc(36.5%);
 }
 
 .time > img {
@@ -229,7 +231,8 @@
 	list-style: none;
 	padding: 0 1.3rem;
 	text-align: center;
-	max-height: 200px;
+	max-height: 7.5rem;
+	min-height: 6.25rem;
 	overflow: hidden scroll;
 }
 
@@ -263,6 +266,13 @@
 	height: 20px;
 	border-radius: 50%;
 	font-size: 0.8rem;
+}
+
+.li-name-user {
+	display: inline-block;
+	width: 6rem;
+	text-align: left;
+	overflow: hidden;
 }
 
 .user-list-ul li > div {
