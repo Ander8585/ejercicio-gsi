@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/ejercicio-gsi/static/css/main.a29762e3.css",
-    "main.js": "/ejercicio-gsi/static/js/main.26d61f65.js",
+    "main.js": "/ejercicio-gsi/static/js/main.55ef27bc.js",
     "static/js/787.96d67bf9.chunk.js": "/ejercicio-gsi/static/js/787.96d67bf9.chunk.js",
     "static/media/forniteLight.jpg": "/ejercicio-gsi/static/media/forniteLight.18d454467f47dca49dff.jpg",
     "static/media/forniteDark.jpg": "/ejercicio-gsi/static/media/forniteDark.c61568d85021a3fbfcde.jpg",
     "index.html": "/ejercicio-gsi/index.html",
     "main.a29762e3.css.map": "/ejercicio-gsi/static/css/main.a29762e3.css.map",
-    "main.26d61f65.js.map": "/ejercicio-gsi/static/js/main.26d61f65.js.map",
+    "main.55ef27bc.js.map": "/ejercicio-gsi/static/js/main.55ef27bc.js.map",
     "787.96d67bf9.chunk.js.map": "/ejercicio-gsi/static/js/787.96d67bf9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a29762e3.css",
-    "static/js/main.26d61f65.js"
+    "static/js/main.55ef27bc.js"
   ]
 }
