@@ -15,13 +15,17 @@ const tabs = [
 
 const defaultTab = localStorage.getItem("defaultTab");
 
+let timeInit = new Date();
+
 const MainBoard = ({ theme = "light", accessToken, isLogguedIn }) => {
 	const [selectedUser, setSelectedUser] = useState(userAvatar);
 	const [searchText, setSearchText] = useState("");
 	const [gameTitle, setGameTitle] = useState("Search for a game...");
 	const [gamePicture, setGamePicture] = useState("");
 	const [userList, setUserList] = useState(null);
-	const [clock, setClock] = useState("00 : 00");
+	const [clock, setClock] = useState(
+		`${timeInit.getHours()} : ${timeInit.getMinutes()}`
+	);
 
 	useEffect(() => {
 		setInterval(() => {

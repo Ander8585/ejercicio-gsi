@@ -6,11 +6,11 @@ import TrendingCategiesGrid from "./components/TrendingCategiesGrid";
 import packageJson from "../package.json";
 import { helpHttp } from "./helpers/helpHttp";
 ///////////////////////////////////////////////////////////////////////////
-///////     /*   Redireccionado de despliegue en Giihub     */       //////
+///////     /*   Redireccionado de despliegue en Github     */       //////
 ///////     /* "https://ander8585.github.io/ejercicio-gsi/", */      //////
 ///////////////////////////////////////////////////////////////////////////
 ///////     /*   Redireccionado de despliegue en local      */       //////
-///////            /* "https://localhost:3000/", */                  //////
+///////            /* "http://localhost:3000", */                  //////
 ///////////////////////////////////////////////////////////////////////////
 
 const initTheme = localStorage.getItem("darkTheme");
