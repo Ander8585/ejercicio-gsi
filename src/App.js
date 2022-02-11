@@ -5,6 +5,13 @@ import MainBoard from "./components/MainBoard";
 import TrendingCategiesGrid from "./components/TrendingCategiesGrid";
 import packageJson from "../package.json";
 import { helpHttp } from "./helpers/helpHttp";
+///////////////////////////////////////////////////////////////////////////
+///////     /*   Redireccionado de despliegue en Giihub     */       //////
+///////     /* "https://ander8585.github.io/ejercicio-gsi/", */      //////
+///////////////////////////////////////////////////////////////////////////
+///////     /*   Redireccionado de despliegue en local      */       //////
+///////            /* "https://localhost:3000/", */                  //////
+///////////////////////////////////////////////////////////////////////////
 
 const initTheme = localStorage.getItem("darkTheme");
 if (initTheme) document.documentElement.classList.add(initTheme);

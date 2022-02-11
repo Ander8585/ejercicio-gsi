@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./MainBoard.css";
 import userAvatar from "../assets/userAvatar.png";
 
@@ -21,6 +21,14 @@ const MainBoard = ({ theme = "light", accessToken, isLogguedIn }) => {
 	const [gameTitle, setGameTitle] = useState("Search for a game...");
 	const [gamePicture, setGamePicture] = useState("");
 	const [userList, setUserList] = useState(null);
+	const [clock, setClock] = useState("00 : 00");
+
+	useEffect(() => {
+		setInterval(() => {
+			let realTime = new Date();
+			setClock(`${realTime.getHours()} : ${realTime.getMinutes()}`);
+		}, 2000);
+	}, []);
 
 	const onChangeTab = (e) => {
 		localStorage.setItem("defaultTab", e.target.value);
@@ -197,7 +205,7 @@ const MainBoard = ({ theme = "light", accessToken, isLogguedIn }) => {
 					Join Live Stream
 				</h5>
 				<p className="time">
-					<span>11 : 45</span>
+					<span>{clock}</span>
 					<img src={selectedUser} alt="user avatar" className="useravatar" />
 				</p>
 			</article>
