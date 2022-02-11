@@ -33,6 +33,8 @@ const MainBoard = ({ theme = "light", accessToken }) => {
 	};
 
 	const searchGame = (e) => {
+		if (searchText === "") return;
+
 		if (!accessToken) {
 			alert("Debe autenticarse antes de buscar un juego");
 			return;
@@ -69,7 +71,6 @@ const MainBoard = ({ theme = "light", accessToken }) => {
 								multipleIdUsers += `id=${stream.user_id}&`;
 							else multipleIdUsers += `id=${stream.user_id}`;
 						});
-						console.log("MultipleUsers: ", multipleIdUsers);
 						api
 							.get(
 								`https://api.twitch.tv/helix/users?${multipleIdUsers}`,
@@ -79,13 +80,19 @@ const MainBoard = ({ theme = "light", accessToken }) => {
 								console.log(resUsers);
 								setUserList([...resUsers.data]);
 							})
-							.catch((err) => console.log("Error de busqueda de los usuarios"));
+							.catch((err) =>
+								console.log("Error de busqueda de los usuarios del juego")
+							);
 					})
 					.catch((err) =>
 						console.log("Error de busqueda de los Streams del juego")
 					);
 			})
 			.catch((err) => console.log("Error de busqueda del juego"));
+	};
+
+	const keyEnter = (e) => {
+		if (e.key === "Enter") searchGame();
 	};
 
 	return (
@@ -173,11 +180,10 @@ const MainBoard = ({ theme = "light", accessToken }) => {
 				className={`mainboard-imgcenter ${theme}`}
 				style={gamePicture ? { backgroundImage: `url("${gamePicture}")` } : {}}
 			>
-				{console.log(gamePicture)}
 				<h3
 					className="imgcenter-title"
 					style={
-						gamePicture ? { "text-shadow": "0 0 0.4rem rgba(0, 0, 0, 1)" } : {}
+						gamePicture ? { textShadow: "0 0 0.4rem rgba(0, 0, 0, 1)" } : {}
 					}
 				>
 					{gameTitle}
@@ -213,9 +219,10 @@ const MainBoard = ({ theme = "light", accessToken }) => {
 							type="text"
 							name="search"
 							placeholder="Find games..."
-							autocomplete="off"
+							autoComplete="off"
 							value={searchText}
 							onChange={(e) => setSearchText(e.target.value)}
+							onKeyDown={keyEnter}
 						/>
 						<svg
 							width="192"

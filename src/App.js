@@ -28,17 +28,14 @@ function App() {
 		let authCode = params.get("code");
 
 		if (authCode) {
-			let urlLogin = `https://id.twitch.tv/oauth2/token?client_id=4grmswqvi0ovo1uus3z5u4z8et1vvt&client_secret=hkhhb1wznmfn865nf8s0sreonhcffr&code=${authCode}&grant_type=authorization_code&redirect_uri=http://localhost:3000`;
+			let urlLogin = `https://id.twitch.tv/oauth2/token?client_id=4grmswqvi0ovo1uus3z5u4z8et1vvt&client_secret=hkhhb1wznmfn865nf8s0sreonhcffr&code=${authCode}&grant_type=authorization_code&redirect_uri=${packageJson.homepage}`;
 
 			api
 				.post(urlLogin, options)
 				.then((res) => {
-					//console.log(res);
 					if (!res.err) {
 						console.log("CORRECTO!!!");
-						console.log(res);
 						accessToken = res.access_token;
-						console.log(accessToken);
 						setIsLogguedIn(true);
 					} else {
 						console.log("HUBO UN ERROR");
@@ -50,7 +47,6 @@ function App() {
 			console.log("El usuario denegó el acceso");
 		}
 		window.history.replaceState({}, "", packageJson.homepage);
-		console.log(window.location);
 	}, []);
 
 	const changeTheme = (e) => {

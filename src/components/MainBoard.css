@@ -205,12 +205,12 @@
 }
 
 .searching-box-input-container input {
-	width: 87%;
+	width: 80%;
 	font-size: 1rem;
 	font-family: inherit;
 	font-weight: bold;
 	border: 0;
-	padding-left: 0.5rem;
+	padding-right: 1.9rem;
 	color: inherit;
 	background-color: var(--slicetrack-bg);
 }
@@ -257,6 +257,7 @@
 	align-items: center;
 	gap: 1rem;
 	font-weight: bold;
+	font-size: .9rem;
 }
 
 .li-index-user {
