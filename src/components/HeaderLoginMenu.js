@@ -1,9 +1,9 @@
 import React from "react";
 import "./HeaderLoginMenu.css";
 import ToggleButton from "./ToggleButton";
+import packageJson from "../../package.json";
 
-const urlLogin =
-	"https://id.twitch.tv/oauth2/authorize?client_id=4grmswqvi0ovo1uus3z5u4z8et1vvt&redirect_uri=http://localhost:3000&response_type=code&scope=viewing_activity_read&force_verify=true";
+const urlLogin = `https://id.twitch.tv/oauth2/authorize?client_id=4grmswqvi0ovo1uus3z5u4z8et1vvt&redirect_uri=${packageJson.homepage}&response_type=code&scope=viewing_activity_read&force_verify=true`;
 
 const HeaderLoginMenu = ({
 	theme = "",
