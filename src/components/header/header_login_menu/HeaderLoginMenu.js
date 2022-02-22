@@ -1,7 +1,7 @@
 import React from "react";
 import "./HeaderLoginMenu.css";
 import ToggleButton from "./ToggleButton";
-import packageJson from "../../package.json";
+import packageJson from "../../../../package.json";
 
 const urlLogin = `https://id.twitch.tv/oauth2/authorize?client_id=4grmswqvi0ovo1uus3z5u4z8et1vvt&redirect_uri=${packageJson.homepage}&response_type=code&scope=viewing_activity_read&force_verify=true`;
 
@@ -28,8 +28,8 @@ const HeaderLoginMenu = ({
 				knobLeftColor="var(--text-color-gray-medium)"
 				bgRightColor="white"
 				knobRightColor="var(--bgdark-body-color)"
-				top="2.4rem"
-				left="-1.1rem"
+				top={isLogguedIn ? "1.4rem" : "2.4rem"} //2.4
+				/* left="-1.1rem" */
 				boderColor={
 					theme === "dark" ? "transparent" : "var(--text-color-gray-medium)"
 				}
@@ -39,9 +39,11 @@ const HeaderLoginMenu = ({
 			<button className={`header-loginmenu-signin ${theme}`} onClick={login}>
 				{isLogguedIn ? "Sign out" : "Sign in"}
 			</button>
-			<button className={`header-loginmenu-register ${theme}`}>
-				Create Account
-			</button>
+			{!isLogguedIn && (
+				<button className={`header-loginmenu-register ${theme}`}>
+					Create Account
+				</button>
+			)}
 		</nav>
 	);
 };

@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  height: 200vh;
   background-color: var(--body-color);
   max-width: 1280px;
   margin: 0 auto;
@@ -11,4 +10,15 @@
   margin-bottom: 0;
   text-align: left;
   padding-left: 6rem;
+}
+
+
+/* *****************Responsive Desktop first****************** */
+/* *********************************************************** */
+
+/* *****************Up  to 768px ***************************** */
+@media screen and (max-width: 767px) {
+  .App h2 {
+    padding-left: 5%;
+  }
 }

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./MainBoard.css";
-import userAvatar from "../assets/userAvatar.png";
+import userAvatar from "../../assets/userAvatar.png";
 
 import SlideTab from "./SlideTab";
-import { helpHttp } from "../helpers/helpHttp";
+import { helpHttp } from "../../helpers/helpHttp";
 
 const api = helpHttp();
 
@@ -214,78 +214,82 @@ const MainBoard = ({ theme = "light", accessToken, isLogguedIn }) => {
 				</p>
 			</article>
 			<article className={`mainboard-selectionarea ${theme}`}>
-				<p className={`mainboard-selectionarea-subtitle ${theme}`}>
-					01. <span>Choose Platform</span>
-				</p>
-				<SlideTab
-					theme={theme}
-					tabItems={tabs}
-					defaultItem={defaultTab}
-					onChange={onChangeTab}
-				/>
-				<p className={`mainboard-selectionarea-subtitle ${theme}`}>
-					02. <span>Searching Game</span>
-				</p>
-				<aside className={`searching-box ${theme}`}>
-					<div className={`searching-box-input-container ${theme}`}>
-						<input
-							type="text"
-							name="search"
-							placeholder="Find games..."
-							autoComplete="off"
-							value={searchText}
-							onChange={(e) => setSearchText(e.target.value)}
-							onKeyDown={keyEnter}
-						/>
-						<svg
-							width="192"
-							height="158"
-							viewBox="0 0 192 158"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								fillRule="evenodd"
-								clipRule="evenodd"
-								d="M53 36.5C53 45.6127 45.6127 53 36.5 53C27.3873 53 20 45.6127 20 36.5C20 27.3873 27.3873 20 36.5 20C45.6127 20 53 27.3873 53 36.5ZM73 36.5C73 56.6584 56.6584 73 36.5 73C16.3416 73 0 56.6584 0 36.5C0 16.3416 16.3416 0 36.5 0C56.6584 0 73 16.3416 73 36.5ZM107 46H192V26H107V46ZM0 129H85V109H0V129ZM155.5 138C164.613 138 172 130.613 172 121.5C172 112.387 164.613 105 155.5 105C146.387 105 139 112.387 139 121.5C139 130.613 146.387 138 155.5 138ZM155.5 158C175.658 158 192 141.658 192 121.5C192 101.342 175.658 85 155.5 85C135.342 85 119 101.342 119 121.5C119 141.658 135.342 158 155.5 158Z"
-								fill="#808080"
+				<div className="choose-platform-area">
+					<p className={`mainboard-selectionarea-subtitle ${theme}`}>
+						01. <span>Choose Platform</span>
+					</p>
+					<SlideTab
+						theme={theme}
+						tabItems={tabs}
+						defaultItem={defaultTab}
+						onChange={onChangeTab}
+					/>
+				</div>
+				<div className="searching-game-area">
+					<p className={`mainboard-selectionarea-subtitle ${theme}`}>
+						02. <span>Searching Game</span>
+					</p>
+					<aside className={`searching-box ${theme}`}>
+						<div className={`searching-box-input-container ${theme}`}>
+							<input
+								type="text"
+								name="search"
+								placeholder="Find games..."
+								autoComplete="off"
+								value={searchText}
+								onChange={(e) => setSearchText(e.target.value)}
+								onKeyDown={keyEnter}
 							/>
-						</svg>
-					</div>
-					<div className="user-list">
-						<ul className={`user-list-ul ${theme}`}>
-							{userList &&
-								userList.map((user, index) => (
-									<li key={user.id}>
-										<span className="li-index-user">{index + 1}</span>
-										<span className="li-name-user">
-											{(user.display_name.length > 9
-												? user.display_name.slice(0, 9) + "..."
-												: user.display_name) || "user name"}
-										</span>
-										<img
-											className="li-image-user"
-											src={user ? user.profile_image_url : userAvatar}
-											alt="user profile"
-											style={{ backgroundColor: "#0005" }}
-										/>
-										<div>
-											<button
-												className="li-button-user"
-												onClick={addUser}
-												data-index={index}
-											>
-												+
-											</button>
-										</div>
-									</li>
-								))}
-						</ul>
-						<button className={`search-button ${theme}`} onClick={searchGame}>
-							Search Now
-						</button>
-					</div>
-				</aside>
+							<svg
+								width="192"
+								height="158"
+								viewBox="0 0 192 158"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									fillRule="evenodd"
+									clipRule="evenodd"
+									d="M53 36.5C53 45.6127 45.6127 53 36.5 53C27.3873 53 20 45.6127 20 36.5C20 27.3873 27.3873 20 36.5 20C45.6127 20 53 27.3873 53 36.5ZM73 36.5C73 56.6584 56.6584 73 36.5 73C16.3416 73 0 56.6584 0 36.5C0 16.3416 16.3416 0 36.5 0C56.6584 0 73 16.3416 73 36.5ZM107 46H192V26H107V46ZM0 129H85V109H0V129ZM155.5 138C164.613 138 172 130.613 172 121.5C172 112.387 164.613 105 155.5 105C146.387 105 139 112.387 139 121.5C139 130.613 146.387 138 155.5 138ZM155.5 158C175.658 158 192 141.658 192 121.5C192 101.342 175.658 85 155.5 85C135.342 85 119 101.342 119 121.5C119 141.658 135.342 158 155.5 158Z"
+									fill="#808080"
+								/>
+							</svg>
+						</div>
+						<div className="user-list">
+							<ul className={`user-list-ul ${theme}`}>
+								{userList &&
+									userList.map((user, index) => (
+										<li key={user.id}>
+											<span className="li-index-user">{index + 1}</span>
+											<span className="li-name-user">
+												{(user.display_name.length > 9
+													? user.display_name.slice(0, 9) + "..."
+													: user.display_name) || "user name"}
+											</span>
+											<img
+												className="li-image-user"
+												src={user ? user.profile_image_url : userAvatar}
+												alt="user profile"
+												style={{ backgroundColor: "#0005" }}
+											/>
+											<div>
+												<button
+													className="li-button-user"
+													onClick={addUser}
+													data-index={index}
+												>
+													+
+												</button>
+											</div>
+										</li>
+									))}
+							</ul>
+							<button className={`search-button ${theme}`} onClick={searchGame}>
+								Search Now
+							</button>
+						</div>
+					</aside>
+				</div>
 			</article>
 		</main>
 	);

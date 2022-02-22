@@ -2,7 +2,7 @@
 	"name": "ejercicio-gsi",
 	"version": "0.1.0",
 	"private": true,
-	"homepage": "https://ander8585.github.io/ejercicio-gsi/",
+	"homepage": "http://localhost:3000",
 	"dependencies": {
 		"@testing-library/jest-dom": "^5.16.2",
 		"@testing-library/react": "^12.1.2",

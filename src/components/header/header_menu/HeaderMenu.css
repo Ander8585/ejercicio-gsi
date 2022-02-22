@@ -1,0 +1,81 @@
+.header-menu {
+  display: flex;
+  gap: 10%;
+  width: 40%;
+  font-weight: bold;
+}
+
+.header-menu a {
+  text-decoration: none;
+  color: var(--text-color-gray-medium);
+}
+
+.header-menu a:first-child {
+  color: var( --mainboard-center-color);
+  position: relative;
+}
+
+.header-menu a:hover {
+  opacity: 0.5;
+}
+
+.home-svg {
+  width: 5rem;
+  height: auto;
+  position: absolute;
+  top: -.7rem;
+  left: -1.3rem;
+  stroke-width: 8;
+}
+
+/* *****************Responsive Desktop first****************** */
+/* *********************************************************** */
+
+/* *****************768px to 1023px ************************** */
+@media screen and (max-width: 1023px) {
+  .header-menu {
+    position: fixed;
+    left: 0;
+    bottom: 5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--second-color);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+  }
+
+  .header-menu.is-active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .header-menu a {
+    display: block;
+    padding: 1.5rem;
+    width: 100%;
+    background-color: var(--body-color);
+    border-top: thin solid var(--text-second-color);
+  }
+
+  .header-menu a:last-child {
+    border-bottom: thin solid var(--text-second-color);
+  }
+
+  .header-menu a:hover {
+    opacity: 1;
+    background-color: black;
+  }
+
+  .header-menu.dark a:hover {
+    background-color: white;
+  }
+
+  .home-svg {
+    left: calc(50% - 3rem);
+    top: 1rem;
+  }
+
+
+}

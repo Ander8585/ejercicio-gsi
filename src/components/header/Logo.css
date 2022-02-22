@@ -1,0 +1,39 @@
+.logo {
+  text-decoration: none;
+  font-weight: bold;
+  color: var(--text-first-color);
+  font-size: 1.5rem;
+  /* font-family: RomanS; */
+  position: relative;
+}
+
+.logo-blur {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  position: absolute;
+  top: 0.1rem;
+  left: -1rem;
+  background-color: transparent;
+  backdrop-filter: blur(.2rem);
+}
+
+
+/* *****************Responsive Desktop first****************** */
+/* *********************************************************** */
+
+/* *****************Up  to 768px ************************** */
+@media screen and (max-width: 767px) {
+  .logo {
+    font-size: 1rem;
+  }
+
+  .logo-blur {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    position: absolute;
+    top: 0.1rem;
+    left: -.5rem;
+  }
+}

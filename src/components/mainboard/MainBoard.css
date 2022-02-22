@@ -1,6 +1,6 @@
 .mainboard {
 	max-width: 85%;
-	min-width: 1024px;
+	min-width: 910px;
 	margin: 0 auto;
 	/* border: thin solid black; */
 	display: flex;
@@ -16,8 +16,11 @@
 /***************1st Artlicle********************/
 .mainboard-heroimg {
 	--top-bg-svg: 8.5rem;
+	--rings-offset-height: 3.3rem;
+	--padding-left-heroimg: calc(2rem + 1vw);
+	grid-area: mainboard-heroimg;
 
-	padding: 4rem 3rem;
+	padding: 4rem var(--padding-left-heroimg);
 	position: relative;
 }
 
@@ -26,20 +29,21 @@
 	height: auto;
 	position: absolute;
 	top: var(--top-bg-svg);
-	left: 3rem;
+	left: var(--padding-left-heroimg);
 	color: var(--text-second-color);
 	stroke-width: 2;
 }
 .mainboard-heroimg-bg-svg.second {
-	top: calc(var(--top-bg-svg) + 3.3rem);
+	top: calc(var(--top-bg-svg) + var(--rings-offset-height));
 }
 .mainboard-heroimg-bg-svg.third {
-	top: calc(var(--top-bg-svg) + 6.6rem);
+	top: calc(var(--top-bg-svg) + var(--rings-offset-height)*2);
 }
 
 .mainboard-heroimg-text {
-	font-size: clamp(2.5rem, 2.18rem + 1.56vw, 3.37rem);
-	line-height: 3.7rem;
+	font-size: clamp(2.27rem, 2.01rem + 1.56vw, 2.93rem);
+	/* clamp(2.5rem, 2.18rem + 1.56vw, 3.37rem); */
+	line-height: 3.3rem;
 	font-weight: 600;
 	padding-right: 1rem;
 	padding-bottom: 2rem;
@@ -52,8 +56,9 @@
 }
 
 .small-text {
-	margin-bottom: 2.5rem;
 	position: relative;
+	margin-bottom: 2.5rem;
+	white-space: nowrap;
 }
 
 .small-text.dark {
@@ -74,8 +79,8 @@
 
 .mainboard-login {
 	display: flex;
-	justify-content: center;
-	gap: 1rem;
+	justify-content: space-between;
+	/* gap: 1rem; */
 	font-size: 0.9rem;
 	font-weight: 600;
 	color: var(--text-first-color);
@@ -84,7 +89,7 @@
 .mainboard-login-createaccount {
 	border: none;
 	border-radius: 1.8rem;
-	padding: 0.9rem 1.7rem 1.1rem 1.7rem;
+	padding: 0.9rem 1rem 1.1rem;
 	background-color: white;
 	box-shadow: 0.25rem 0.25rem 1rem rgba(0, 0, 0, 0.1);
 	color: inherit;
@@ -105,6 +110,7 @@
 .mainboard-login-signin {
 	border: none;
 	background-color: transparent;
+	padding: 0.9rem 0.8rem 1.1rem;;
 	font-weight: inherit;
 	font-size: inherit;
 	font-family: inherit;
@@ -122,13 +128,14 @@
 	text-align: center;
 	padding: 1.5rem;
 	background-color: var(--mainboard-center-color);
-	background-image: url("../assets/forniteLight.jpg");
+	background-image: url("../../assets/forniteLight.jpg");
 	background-size: cover;
 	background-position: center;
+	grid-area: mainboard-imgcenter;
 }
 
 .mainboard-imgcenter.dark {
-	background-image: url("../assets/forniteDark.jpg");
+	background-image: url("../../assets/forniteDark.jpg");
 }
 
 .imgcenter-title {
@@ -174,7 +181,8 @@
 /***************3rd Artlicle********************/
 
 .mainboard-selectionarea {
-	padding: 2.5rem;
+	padding: 2.2rem;
+	grid-area: mainboard-selectionarea;
 }
 
 .mainboard-selectionarea-subtitle {
@@ -326,4 +334,66 @@
 	background-color: white;
 	color: black;
 	box-shadow: 0 -2rem 2rem 1rem var(--slicetrack-bg);
+}
+
+/* *****************Responsive Desktop first****************** */
+/* *********************************************************** */
+
+/* *****************768px to 1023px ************************** */
+@media screen and (max-width: 1023px) {
+  .mainboard{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+      grid-template-areas:
+        "mainboard-heroimg  			 mainboard-imgcenter"
+        "mainboard-selectionarea   mainboard-selectionarea";
+		/* justify-content: stretch; */
+		min-width: 648px;
+		margin-top: 3rem;
+  }
+
+	.mainboard > * {
+		width: 100%;
+	}
+
+	.mainboard-imgcenter {
+		border-radius: 0.4rem 1.5rem 0.4rem 0.4rem;
+	}
+
+	.mainboard-selectionarea {
+		display: flex;
+		justify-content: space-around;
+		text-align: center;		
+	}
+	.choose-platform-area {
+		min-width: 42%;
+	}
+
+}
+
+/* *****************Up  to 768px ************************** */
+@media screen and (max-width: 767px) {
+  .mainboard{
+		max-width: 85%;
+	  min-width: 310px;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.mainboard-imgcenter {
+		border-radius: 0.4rem;
+	}
+
+	.mainboard-selectionarea {
+		display: block;
+		justify-content: auto;
+		text-align: left;
+		/* border-top: thin solid var(--mainboard-center-color); */
+	}
+
+	.mainboard-imgcenter {
+		min-height: 80vh;
+	}
+
 }

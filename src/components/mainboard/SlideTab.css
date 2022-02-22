@@ -9,6 +9,8 @@
 .nav-platformmenu {
   --height-nav: 50px;
   --vertical-padding: calc((var(--height-nav) - 1.5rem) / 2);
+  font-size: 0.85rem;
+
 
   padding: var(--vertical-padding);
   background-color: var(--slicetrack-bg);

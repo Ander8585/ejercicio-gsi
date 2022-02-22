@@ -1,0 +1,56 @@
+.trending-categories {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 85%;
+  min-width: 910px;
+  margin: 0 auto;
+  justify-content: space-evenly;
+  
+}
+
+.category-item {
+  width: 24%;
+  height: 8rem;
+  border-radius: 0.5rem;
+  margin-top: 1%;
+  background-color: var(--mainboard-color);
+  padding: 2rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.category-item:hover {
+  opacity: 0.5;
+}
+
+
+/* *****************Responsive Desktop first****************** */
+/* *********************************************************** */
+
+/* *****************768px to 1023px ************************** */
+@media screen and (max-width: 1023px) {
+  .trending-categories {
+    max-width: 85%;
+    min-width: 648px;
+    margin-bottom: 5rem;
+  }
+
+  .category-item {
+    width: 32%;
+  }
+}
+
+/* *****************Up  to 768px ************************** */
+@media screen and (max-width: 767px) {
+  .trending-categories {
+    max-width: 90%;
+    min-width: 310px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+
+  .category-item {
+    width: 100%;
+    
+  }
+}

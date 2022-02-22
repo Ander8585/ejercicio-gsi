@@ -1,6 +1,7 @@
 .toggle-button-component {
   position: relative;
-  --height: 1rem;
+	--customized-height: 1.5rem;
+  --height: var(--customized-height);
   --bg-light-color: #ebf7fc;
   --bg-dark-color: #fcebeb;
   --knob-light-color: #03a9f4;
@@ -89,4 +90,21 @@
 #toggle-button-1 .knobs:before,
 #toggle-button-1 .layer {
 	transition: 0.3s ease all;
+}
+
+/* *****************Responsive Desktop first****************** */
+/* *********************************************************** */
+
+/* *****************768px to 1023px ************************** */
+@media screen and (max-width: 1023px) {
+  
+}
+
+/* *****************Up  to 768px ************************** */
+@media screen and (max-width: 767px) {
+  .toggle-button-component {
+		--height: calc(var(--customized-height) - 0.3rem);
+		--top: 1.4rem;
+	}
+
 }

@@ -2,8 +2,8 @@
   width: 40%;/* 28.3%; */
   display: flex;
   justify-content: flex-end;
-  justify-items: stretch;
-  gap: 2rem;
+  justify-items: center;
+  gap: 5%;
   font-size: 1rem;
   font-weight: bold;
 }
@@ -41,3 +41,30 @@
   border: 1px solid #8886 ;
 }
 
+/* *****************Responsive Desktop first****************** */
+/* *********************************************************** */
+
+/* *****************768px to 1023px ************************** */
+@media screen and (max-width: 1023px) {
+  .header-loginmenu {
+    justify-content: center;
+    width: 50%;
+  }
+}
+
+/* *****************Up  to 768px ************************** */
+@media screen and (max-width: 767px) {
+  .header-loginmenu {
+    width: 65%;
+    font-size: 0.8rem;
+  }
+
+  .header-loginmenu-register {
+    padding: 0.5rem 1.2rem 0.6rem 1.2rem;
+  }
+  /* ajuste de alineacion de toggle button por debajo de 768px */
+  .toggle-button-component {
+    
+  }
+
+}

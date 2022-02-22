@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import Header from "./components/Header";
-import MainBoard from "./components/MainBoard";
-import TrendingCategiesGrid from "./components/TrendingCategiesGrid";
+import Header from "./components/header/Header";
+import MainBoard from "./components/mainboard/MainBoard";
+import TrendingCategiesGrid from "./components/trending_categories/TrendingCategiesGrid";
 import packageJson from "../package.json";
 import { helpHttp } from "./helpers/helpHttp";
 ///////////////////////////////////////////////////////////////////////////
@@ -10,7 +10,7 @@ import { helpHttp } from "./helpers/helpHttp";
 ///////     /* "https://ander8585.github.io/ejercicio-gsi/", */      //////
 ///////////////////////////////////////////////////////////////////////////
 ///////     /*   Redireccionado de despliegue en local      */       //////
-///////            /* "http://localhost:3000", */                  //////
+///////            /* "http://localhost:3000", */                    //////
 ///////////////////////////////////////////////////////////////////////////
 
 const initTheme = localStorage.getItem("darkTheme");
@@ -29,6 +29,7 @@ let accessToken = "";
 function App() {
 	const [theme, setTheme] = useState(initTheme);
 	const [isLogguedIn, setIsLogguedIn] = useState(false);
+	const [actionCloseMenu, setActionCloseMenu] = useState(false);
 
 	useEffect(() => {
 		let params = new URLSearchParams(window.location.search);
@@ -63,12 +64,13 @@ function App() {
 		localStorage.setItem("darkTheme", currentTheme);
 	};
 	return (
-		<div className="App">
+		<div className="App" onClick={(e) => setActionCloseMenu(!actionCloseMenu)}>
 			<Header
 				theme={theme}
 				changeTheme={changeTheme}
 				isLogguedIn={isLogguedIn}
 				setIsLogguedIn={setIsLogguedIn}
+				actionCloseMenu={actionCloseMenu}
 			/>
 			<MainBoard
 				theme={theme}
@@ -77,6 +79,8 @@ function App() {
 			/>
 			<h2>Trending Categories</h2>
 			<TrendingCategiesGrid theme={theme} />
+			<br />
+			<br />
 		</div>
 	);
 }

@@ -1,9 +1,12 @@
 import React from "react";
 import "./HeaderMenu.css";
 
-const HeaderMenu = ({ theme = "light" }) => {
+const HeaderMenu = ({ theme = "light", isOpen, onClick }) => {
 	return (
-		<nav className={`header-menu ${theme}`}>
+		<nav
+			className={`header-menu ${theme} ${isOpen ? "is-active" : ""}`}
+			onClick={onClick}
+		>
 			<a href="#header" className="header-menu-item">
 				<svg
 					className="home-svg"
