@@ -1,19 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Logo from "./Logo";
 import HeaderLoginMenu from "./header_login_menu/HeaderLoginMenu";
 import HeaderMenu from "./header_menu/HeaderMenu";
 import "./Header.css";
 import MenuBtn from "./MenuBtn";
+import ThemeContext from "./../../context/ThemeContext";
 
-const Header = ({
-	theme = "",
-	changeTheme,
-	isLogguedIn,
-	setIsLogguedIn,
-	actionCloseMenu,
-}) => {
+const Header = ({ /* isLogguedIn, setIsLogguedIn, */ actionCloseMenu }) => {
 	const [isOpenMenu, setIsOpenMenu] = useState(false);
-
+	const { theme } = useContext(ThemeContext);
 	const showMenu = (e) => {
 		e.stopPropagation();
 		setIsOpenMenu(!isOpenMenu);
@@ -29,15 +24,9 @@ const Header = ({
 
 	return (
 		<div className={`header ${theme}`} id="header">
-			<HeaderMenu theme={theme} isOpen={isOpenMenu} onClick={closeMenu} />
-			<Logo theme={theme} />
-
-			<HeaderLoginMenu
-				theme={theme}
-				changeTheme={changeTheme}
-				isLogguedIn={isLogguedIn}
-				setIsLogguedIn={setIsLogguedIn}
-			/>
+			<HeaderMenu isOpen={isOpenMenu} onClick={closeMenu} />
+			<Logo />
+			<HeaderLoginMenu />
 			<MenuBtn isOpen={isOpenMenu} onClick={showMenu} />
 		</div>
 	);

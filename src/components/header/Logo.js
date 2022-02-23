@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Logo.css";
+import ThemeContext from "./../../context/ThemeContext";
 
-const Logo = ({ theme = "light" }) => {
+const Logo = () => {
+	const { theme } = useContext(ThemeContext);
 	return (
 		<a href="#header" className={`logo ${theme}`}>
 			<span>Gamor</span>

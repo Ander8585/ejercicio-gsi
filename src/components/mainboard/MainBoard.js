@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./MainBoard.css";
 import userAvatar from "../../assets/userAvatar.png";
 
 import SlideTab from "./SlideTab";
 import { helpHttp } from "../../helpers/helpHttp";
+import ThemeContext from "./../../context/ThemeContext";
+import AuthContext from "./../../context/AuthContext";
 
 const api = helpHttp();
 
@@ -17,7 +19,7 @@ const defaultTab = localStorage.getItem("defaultTab");
 
 let timeInit = new Date();
 
-const MainBoard = ({ theme = "light", accessToken, isLogguedIn }) => {
+const MainBoard = ({ accessToken }) => {
 	const [selectedUser, setSelectedUser] = useState(userAvatar);
 	const [searchText, setSearchText] = useState("");
 	const [gameTitle, setGameTitle] = useState("Search for a game...");
@@ -26,6 +28,8 @@ const MainBoard = ({ theme = "light", accessToken, isLogguedIn }) => {
 	const [clock, setClock] = useState(
 		`${timeInit.getHours()} : ${timeInit.getMinutes()}`
 	);
+	const { theme } = useContext(ThemeContext);
+	const { isLogged } = useContext(AuthContext);
 
 	useEffect(() => {
 		setInterval(() => {
@@ -35,11 +39,19 @@ const MainBoard = ({ theme = "light", accessToken, isLogguedIn }) => {
 	}, []);
 
 	const onChangeTab = (e) => {
+		if (!isLogged) {
+			e.preventDefault();
+			alert("You must log in first");
+			return;
+		}
 		localStorage.setItem("defaultTab", e.target.value);
 	};
 
 	const addUser = (e) => {
-		if (!isLogguedIn) return;
+		if (!isLogged) {
+			alert("You must log in first.");
+			return;
+		}
 		setSelectedUser(
 			userList[parseInt(e.target.dataset.index)].profile_image_url
 		);
@@ -48,8 +60,8 @@ const MainBoard = ({ theme = "light", accessToken, isLogguedIn }) => {
 	const searchGame = (e) => {
 		if (searchText === "") return;
 
-		if (!isLogguedIn) {
-			alert("Debe autenticarse antes de buscar un juego");
+		if (!isLogged) {
+			alert("You must log in first.");
 			return;
 		}
 

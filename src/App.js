@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./App.css";
 import Header from "./components/header/Header";
 import MainBoard from "./components/mainboard/MainBoard";
 import TrendingCategiesGrid from "./components/trending_categories/TrendingCategiesGrid";
 import packageJson from "../package.json";
 import { helpHttp } from "./helpers/helpHttp";
+import { ThemeProvider } from "./context/ThemeContext";
+import AuthContext from "./context/AuthContext";
 ///////////////////////////////////////////////////////////////////////////
 ///////     /*   Redireccionado de despliegue en Github     */       //////
 ///////     /* "https://ander8585.github.io/ejercicio-gsi/", */      //////
@@ -12,9 +14,6 @@ import { helpHttp } from "./helpers/helpHttp";
 ///////     /*   Redireccionado de despliegue en local      */       //////
 ///////            /* "http://localhost:3000", */                    //////
 ///////////////////////////////////////////////////////////////////////////
-
-const initTheme = localStorage.getItem("darkTheme");
-if (initTheme) document.documentElement.classList.add(initTheme);
 
 const api = helpHttp();
 
@@ -27,9 +26,9 @@ const options = {
 let accessToken = "";
 
 function App() {
-	const [theme, setTheme] = useState(initTheme);
-	const [isLogguedIn, setIsLogguedIn] = useState(false);
+	/* const [isLogguedIn, setIsLogguedIn] = useState(false); */
 	const [actionCloseMenu, setActionCloseMenu] = useState(false);
+	const { setIsLogged } = useContext(AuthContext);
 
 	useEffect(() => {
 		let params = new URLSearchParams(window.location.search);
@@ -44,7 +43,7 @@ function App() {
 					if (!res.err) {
 						console.log("CORRECTO!!!");
 						accessToken = res.access_token;
-						setIsLogguedIn(true);
+						setIsLogged(true);
 					} else {
 						console.log("HUBO UN ERROR");
 						console.log(res);
@@ -53,34 +52,22 @@ function App() {
 				.catch((err) => console.log("Error:\n", err));
 		} else if (params.get("error") === "access_denied") {
 			console.log("El usuario denegó el acceso");
+			alert("The user denied the access.");
 		}
 		window.history.replaceState({}, "", packageJson.homepage);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	const changeTheme = (e) => {
-		const currentTheme = e.target.checked ? "dark" : "";
-		setTheme(currentTheme);
-		document.documentElement.classList.toggle("dark");
-		localStorage.setItem("darkTheme", currentTheme);
-	};
 	return (
 		<div className="App" onClick={(e) => setActionCloseMenu(!actionCloseMenu)}>
-			<Header
-				theme={theme}
-				changeTheme={changeTheme}
-				isLogguedIn={isLogguedIn}
-				setIsLogguedIn={setIsLogguedIn}
-				actionCloseMenu={actionCloseMenu}
-			/>
-			<MainBoard
-				theme={theme}
-				accessToken={accessToken}
-				isLogguedIn={isLogguedIn}
-			/>
-			<h2>Trending Categories</h2>
-			<TrendingCategiesGrid theme={theme} />
-			<br />
-			<br />
+			<ThemeProvider>
+				<Header actionCloseMenu={actionCloseMenu} />
+				<MainBoard accessToken={accessToken} />
+				<h2>Trending Categories</h2>
+				<TrendingCategiesGrid />
+				<br />
+				<br />
+			</ThemeProvider>
 		</div>
 	);
 }

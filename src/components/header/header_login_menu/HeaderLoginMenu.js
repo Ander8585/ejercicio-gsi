@@ -1,24 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./HeaderLoginMenu.css";
 import ToggleButton from "./ToggleButton";
-import packageJson from "../../../../package.json";
+import ThemeContext from "./../../../context/ThemeContext";
+import AuthContext from "./../../../context/AuthContext";
 
-const urlLogin = `https://id.twitch.tv/oauth2/authorize?client_id=4grmswqvi0ovo1uus3z5u4z8et1vvt&redirect_uri=${packageJson.homepage}&response_type=code&scope=viewing_activity_read&force_verify=true`;
-
-const HeaderLoginMenu = ({
-	theme = "",
-	changeTheme,
-	isLogguedIn,
-	setIsLogguedIn,
-}) => {
-	const login = () => {
-		if (isLogguedIn) {
-			let confirmation = window.confirm("Seguro que desea cerrar Sesión?");
-			if (confirmation) setIsLogguedIn(false);
-		}
-		//falta por hacer. Cdo esta logueado no pincha igual
-		else document.location = urlLogin;
-	};
+const HeaderLoginMenu = () => {
+	const { theme, handleTheme } = useContext(ThemeContext);
+	const { handleLog, isLogged } = useContext(AuthContext);
 
 	return (
 		<nav className={`header-loginmenu ${theme}`}>
@@ -28,18 +16,21 @@ const HeaderLoginMenu = ({
 				knobLeftColor="var(--text-color-gray-medium)"
 				bgRightColor="white"
 				knobRightColor="var(--bgdark-body-color)"
-				top={isLogguedIn ? "1.4rem" : "2.4rem"} //2.4
+				top={isLogged ? "1.4rem" : "2.4rem"} //2.4
 				/* left="-1.1rem" */
-				boderColor={
+				borderColor={
 					theme === "dark" ? "transparent" : "var(--text-color-gray-medium)"
 				}
-				changeTheme={changeTheme}
+				changeTheme={handleTheme}
 				theme={theme}
 			/>
-			<button className={`header-loginmenu-signin ${theme}`} onClick={login}>
-				{isLogguedIn ? "Sign out" : "Sign in"}
+			<button
+				className={`header-loginmenu-signin ${theme}`}
+				onClick={handleLog}
+			>
+				{isLogged ? "Sign out" : "Sign in"}
 			</button>
-			{!isLogguedIn && (
+			{!isLogged && (
 				<button className={`header-loginmenu-register ${theme}`}>
 					Create Account
 				</button>

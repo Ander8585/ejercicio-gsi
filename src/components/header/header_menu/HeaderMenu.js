@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./HeaderMenu.css";
+import ThemeContext from "./../../../context/ThemeContext";
 
-const HeaderMenu = ({ theme = "light", isOpen, onClick }) => {
+const HeaderMenu = ({ isOpen, onClick }) => {
+	const { theme } = useContext(ThemeContext);
 	return (
 		<nav
 			className={`header-menu ${theme} ${isOpen ? "is-active" : ""}`}
